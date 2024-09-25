@@ -20,4 +20,8 @@ class SaveData:
         """_Write the website, email and password to data text file_
         """
         with open("data.txt", "a") as file:
-                file.write(f"{self.get_data()['website']} | {self.get_data()['email']} | {self.get_data()['password']}\n")
+                file.write(f"Website: {self.get_data()['website']} | Email: {self.get_data()['email']} | Password: {self.get_data()['password']}\n")
+        self.clear_data()
+    def clear_data(self):
+        self.website.delete(0, 'end')
+        self.password.delete(0, 'end')
