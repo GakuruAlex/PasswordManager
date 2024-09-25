@@ -14,7 +14,7 @@ def main()->None:
     #Create a window 
     window = Tk()
     # Title of the app
-    email = StringVar(value=EMAIL)
+    
     window.title("Password Generator")
     #Pad window
     window.config(padx=20, pady=20)
@@ -32,14 +32,16 @@ def main()->None:
     # Input field for website name
     website_input = Entry(window, width=FULL_WIDTH)
     website_input.grid(row=1, column = 1, columnspan=2, pady=PADY)
+    website_input.focus()
 
     #Email/username label
     email_label = Label(window, text="Email/Username:", font=FONT)
     email_label.grid(row=2, column=0, pady=PADY)
 
     #Email/Username
-    email_field =  Entry(window, textvariable= email, width= FULL_WIDTH , font= FONT)
+    email_field =  Entry(window,  width= FULL_WIDTH , font= FONT)
     email_field.grid(row= 2, column= 1,  columnspan= 2, pady=PADY)
+    email_field.insert(0, EMAIL)
 
     #Password Label
     password_label = Label(window, text="Password:",font=FONT, )
