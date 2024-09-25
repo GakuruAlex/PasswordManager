@@ -18,4 +18,3 @@ The data is saved to a data.txt file in the project dir
             i)get_data - Processes data from the Tkinter Entry filed in main and formats it into a dictionary of website, email and password keys
             ii)save_data_file - Save the processed data to a text file
             iii)clear_data - Clear password and website fields after saving it
-
