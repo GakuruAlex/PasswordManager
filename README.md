@@ -4,10 +4,10 @@ An app to save websites and their passwords locally and if needed generate a pas
 
 ## Usage ##
 
-From the terminal in the project dir
-    Run pip install -r requirements.txt
+From the terminal in the project dir run
 
-    then run  python  main.py
+    pip install -r requirements.txt
+    python  main.py
 
 The data is saved to a data.txt file in the project dir
 
