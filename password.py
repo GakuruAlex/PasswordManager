@@ -20,4 +20,4 @@ class Password:
         password += [choice(self.symbols) for _ in range(self.num_symbols)]
 
         shuffle(password)
-        return "".join(letter for letter in password)
+        return "".join(password)
