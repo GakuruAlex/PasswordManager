@@ -19,3 +19,9 @@ The data is saved to a data.txt file in the project dir
             i)get_data - Processes data from the Tkinter Entry filed in main and formats it into a dictionary of website, email and password keys
             ii)save_data_file - Save the processed data to a text file
             iii)clear_data - Clear password and website fields after saving it
+            iv) is_website_or_password_empty - Checks whether both password and websites fields have been filled and returns a boolean. True for missing field and False for all fields filled
+            v) is_ready_to_save - Confirms a user is ready to save data using dialog
+    2)Password
+        In password.py
+        Functions:
+            i)generate_password - Create a password that includes letters , numbers and symbols, fill it in the password_field and copy it to clipboard
