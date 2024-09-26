@@ -1,2 +1,9 @@
+# Example of inputs, terrible inputs especially for the password #
 100DaysOfCode | johndoe@dow.com | admin
 admin | janedoe@dow.com | admin1234
+Website: FaceBook | Email: johndoe@dow.com | Password: 1234
+Website: Twitter | Email: johndoe@dow.com | Password: admin
+Website: Ebay | Email: johndoe@dow.com | Password: ebay1234
+Website: Jumia | Email: johndoe@dow.com | Password: password
+Website: Amazon | Email: johndoe@dow.com | Password: password
+Website: eBay | Email: johndoe@dow.com | Password: transformers
