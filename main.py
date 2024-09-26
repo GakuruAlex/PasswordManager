@@ -1,5 +1,6 @@
 from tkinter import Tk, Label, Button, Canvas, PhotoImage,  Entry
 from save_data import SaveData
+from password import Password
 FONT = ("Rubik", 10, )
 EMAIL = "johndoe@dow.com"
 FULL_WIDTH = 45
@@ -12,6 +13,7 @@ PADY = 5
 
 
 def main()->None:
+    
     #Create a window 
     window = Tk()
     # Title of the app
@@ -51,10 +53,11 @@ def main()->None:
     #Password Entry
     password_field = Entry(window, width= PASSWORD_INPUT_WIDTH)
     password_field.grid(row= 3, column=1, pady=PADY)
-
+    generated_password = Password(password_field=password_field)
     #Generate password button
-    password_button = Button(window, text="Generate Password", font=PASSWORD_FONT ,width=PASSWORD_BUTTON_WIDTH)
+    password_button = Button(window, text="Generate Password", font=PASSWORD_FONT ,width=PASSWORD_BUTTON_WIDTH, command=generated_password.generate_password)
     password_button.grid(row= 3, column=2, pady= PADY)
+   
 
     # Create a SaveData object and instantiate with the entry fields
     save_data = SaveData(website_input, email_field, password_field)
