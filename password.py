@@ -1,5 +1,6 @@
 import string
 from random import choice, randint, shuffle
+from pyperclip import copy
 class Password:
     def __init__(self, password_field):
         self.letters = string.ascii_letters
@@ -22,4 +23,5 @@ class Password:
         shuffle(password_1)
         self.password= "".join(password_1)
         self.password_field.insert(0, self.password)
+        copy(self.password)
 
