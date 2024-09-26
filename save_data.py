@@ -20,9 +20,10 @@ class SaveData:
         if self.is_website_or_password_empty():
             messagebox.showerror(title="Missing Fields", message="Website and Password cannot be empty")
         else:
-            with open("data.txt", "a") as file:
-                file.write(f"Website: {self.data['website']} | Email: {self.data['email']} | Password: {self.data['password']}\n")
-                self.clear_data()
+            if self.is_ready_to_save():
+                with open("data.txt", "a") as file:
+                    file.write(f"Website: {self.data['website']} | Email: {self.data['email']} | Password: {self.data['password']}\n")
+                    self.clear_data()
     def clear_data(self)->None:
         """_Clear the content of the input fields_
         """
@@ -35,3 +36,5 @@ class SaveData:
             bool: _True if website or password is empty otherwise False_
         """
         return len(self.data['website'])==0 or len(self.data['password']) == 0
+    def is_ready_to_save(self)->bool:
+        return messagebox.askokcancel(title="Save", message=f"Are you sure you want to save\n Website: {self.data['website']} \n Password: {self.data['password']}")
