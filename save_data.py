@@ -37,4 +37,9 @@ class SaveData:
         """
         return len(self.data['website'])==0 or len(self.data['password']) == 0
     def is_ready_to_save(self)->bool:
+        """_Confirm user wishes to save the given info_
+
+        Returns:
+            bool: _True for ok or False for cancel_
+        """
         return messagebox.askokcancel(title="Save", message=f"Are you sure you want to save\n Website: {self.data['website']} \n Password: {self.data['password']}")
