@@ -13,9 +13,6 @@ class Password:
 
     def generate_password(self)-> str:
         """_Generate a password that includes letters, numbers and symbols_
-
-        Returns:
-            str: _generated password_
         """
         self.password_field.delete(0, 'end')
         password_1 = [choice(self.letters) for _ in range(self.num_letters)]
