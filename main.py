@@ -23,7 +23,7 @@ def main()->None:
     window.config(padx=20, pady=20)
     canvas = Canvas(window, width=200, height=200,)
     #Load logo
-    logo = PhotoImage(file="logo.png")
+    logo = PhotoImage(file="/home/aleyg/projects/Python/100DaysOfCode/DayTwentyNine/PasswordManager/logo.png")
     #Create image on the canvas
     canvas.create_image(100, 100, image=logo)
     canvas.grid(row=0, column=1, padx=0, pady=20, )
