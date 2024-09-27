@@ -1,4 +1,5 @@
 from tkinter import messagebox
+from json import dump, load, JSONDecodeError
 class SaveData:
     def __init__(self, website, email, password):
         self.website = website
@@ -9,9 +10,8 @@ class SaveData:
     def get_data(self)->None:
         """_Process data from Tkinter Entry field and save them into the data dictionary_
         """
-        self.data['website'] = self.website.get()
-        self.data['email'] = self.email.get()
-        self.data['password'] = self.password.get()
+        self.entered_website = self.website.get()
+        self.data[self.entered_website] = {"email":self.email.get(),"password": self.password.get()}
 
     def save_data_file(self)->None:
         """_Write the website, email and password to data text file_
@@ -21,9 +21,7 @@ class SaveData:
             messagebox.showerror(title="Missing Fields", message="Website and Password cannot be empty")
         else:
             if self.is_ready_to_save():
-                with open("data.txt", "a") as file:
-                    file.write(f"Website: {self.data['website']} | Email: {self.data['email']} | Password: {self.data['password']}\n")
-                    self.clear_data()
+                self.save_data_to_json()
     def clear_data(self)->None:
         """_Clear the content of the input fields_
         """
@@ -35,11 +33,26 @@ class SaveData:
         Returns:
             bool: _True if website or password is empty otherwise False_
         """
-        return len(self.data['website'])==0 or len(self.data['password']) == 0
+        return len(self.entered_website)==0 or len(self.data[self.entered_website]['password']) == 0
     def is_ready_to_save(self)->bool:
         """_Confirm user wishes to save the given info_
 
         Returns:
             bool: _True for ok or False for cancel_
         """
-        return messagebox.askokcancel(title="Save", message=f"Are you sure you want to save\n Website: {self.data['website']} \n Password: {self.data['password']}")
+        return messagebox.askokcancel(title="Save", message=f"Are you sure you want to save\n Website: {self.entered_website} \n Password: {self.data[self.entered_website]['password']}")
+    def save_data_to_json(self):
+                try:
+                    with open("data.json","r") as file:
+                        old_data = load(file)
+
+                    with open("data.json", "w") as file:
+                        old_data.update(self.data)
+                        dump(old_data, file ,indent=4)
+                except (FileNotFoundError, JSONDecodeError):
+                    with open("data.json", "w") as file:
+                        dump(self.data, file, indent=4)
+                finally:
+                        self.clear_data()
+
+  
