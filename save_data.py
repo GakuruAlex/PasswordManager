@@ -10,7 +10,7 @@ class SaveData:
     def get_data(self)->None:
         """_Process data from Tkinter Entry field and save them into the data dictionary_
         """
-        self.entered_website = self.website.get()
+        self.entered_website = self.website.get().title()
         self.data[self.entered_website] = {"email":self.email.get(),"password": self.password.get()}
 
     def save_data_file(self)->None:
@@ -58,4 +58,20 @@ class SaveData:
         finally:
                 self.clear_data()
 
-  
+    def search(self)->None:
+        website = self.website.get().title()
+
+        try:
+            with open("data.json", "r") as file:
+                data = load(file)
+        except FileNotFoundError as e:
+            messagebox.showinfo(message=f"{e} Doesn't Exist")
+        else:
+                try:
+                    website_data = data[website]
+                except KeyError as key:
+                    messagebox.showinfo(message=f"{key} Not Found", )
+                else:
+                    messagebox.showinfo(message=f"Email: {website_data['email']} \nPassword: {website_data['password']}", title=f"{website}")
+                    self.website.delete(0, 'end')
+

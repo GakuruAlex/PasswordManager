@@ -18,7 +18,7 @@ def main()->None:
     window = Tk()
     # Title of the app
     
-    window.title("Password Generator")
+    window.title("Password Manager")
     #Pad window
     window.config(padx=20, pady=20)
     canvas = Canvas(window, width=200, height=200,)
@@ -33,8 +33,8 @@ def main()->None:
     website_text.grid(row=1, column=0, pady=PADY)
 
     # Input field for website name
-    website_input = Entry(window, width=FULL_WIDTH)
-    website_input.grid(row=1, column = 1, columnspan=2, pady=PADY)
+    website_input = Entry(window, width=PASSWORD_INPUT_WIDTH)
+    website_input.grid(row=1, column = 1, pady=PADY)
     website_input.focus()
 
     #Email/username label
@@ -57,19 +57,21 @@ def main()->None:
     #Generate password button
     password_button = Button(window, text="Generate Password", font=PASSWORD_FONT ,width=PASSWORD_BUTTON_WIDTH, command=generated_password.generate_password)
     password_button.grid(row= 3, column=2, pady= PADY)
-   
 
     # Create a SaveData object and instantiate with the entry fields
     save_data = SaveData(website_input, email_field, password_field)
-    
+
     #Button for saving content
     add_button = Button(window, text="Add", font=PASSWORD_FONT, width= ADD_BUTTON_WIDTH, command=save_data.save_data_file)
     add_button.grid(row= 4, column=1, columnspan= 2)
-    
-    
+
+     # Search button
+    search = Button(text="Search", width=PASSWORD_BUTTON_WIDTH, font=PASSWORD_FONT, command=save_data.search)
+    search.grid(row=1, column= 2)
+
 
     # Start main loop
     window.mainloop()
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     main()
