@@ -9,7 +9,7 @@ From the terminal in the project dir run
     pip install -r requirements.txt
     python  main.py
 
-The data is saved to a data.txt file in the project dir
+The data is saved to a data.json file in the project dir
 
 ### Class ###
 
