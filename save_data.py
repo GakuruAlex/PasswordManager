@@ -41,18 +41,21 @@ class SaveData:
             bool: _True for ok or False for cancel_
         """
         return messagebox.askokcancel(title="Save", message=f"Are you sure you want to save\n Website: {self.entered_website} \n Password: {self.data[self.entered_website]['password']}")
-    def save_data_to_json(self):
-                try:
-                    with open("data.json","r") as file:
-                        old_data = load(file)
+    def save_data_to_json(self)-> None:
+        """_Read json file contents if it exist, update with new data and then save or create a new 
+        json file and save to it_
+        """
+        try:
+            with open("data.json","r") as file:
+                old_data = load(file)
 
-                    with open("data.json", "w") as file:
-                        old_data.update(self.data)
-                        dump(old_data, file ,indent=4)
-                except (FileNotFoundError, JSONDecodeError):
-                    with open("data.json", "w") as file:
-                        dump(self.data, file, indent=4)
-                finally:
-                        self.clear_data()
+            with open("data.json", "w") as file:
+                old_data.update(self.data)
+                dump(old_data, file ,indent=4)
+        except (FileNotFoundError, JSONDecodeError):
+            with open("data.json", "w") as file:
+                dump(self.data, file, indent=4)
+        finally:
+                self.clear_data()
 
   

@@ -21,6 +21,7 @@ The data is saved to a data.txt file in the project dir
             iii)clear_data - Clear password and website fields after saving it
             iv) is_website_or_password_empty - Checks whether both password and websites fields have been filled and returns a boolean. True for missing field and False for all fields filled
             v) is_ready_to_save - Confirms a user is ready to save data using dialog
+            vi)save_data_to_json - Create a json file if it does not exist and save the data to it else read the contents of the json file , update then save it.
     2)Password
         In password.py
         Functions:
